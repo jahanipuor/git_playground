@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<style type="text/css">
+*{
+	transition:all 1s;
+	-webkit-transition:all 1s;
+	}
+
+.ok{
+	background-color:#00FF66;
+	}
+
+.nok{
+	background-color:#FF0066;
+	}
+
+
+</style>
+
+</head>
+
+<body>
+<div class="form">
+	<form action="" method="get">
+		<input type="text" value="First Name" name="fname" /><br />
+		<input type="text" value="Last Name" name="lname" /><br />
+		<input type="text" value="Age" name="age" /> <br />
+		<input type="submit" value="Submitt" />
+	</form>
+</div>
+<script type="text/javascript">
+
+var myform = document.forms.item(0);
+		myform.onsubmit = function(){
+			
+			var ret = true;
+			
+			for(var i=0;i<myform.elements.length;i++){
+				if(myform.elements.item(i).className!='ok'){
+					ret = false;
+					break;
+				}
+			}
+			
+			return ret;
+		}
+for(var i=0;i<myform.elements.length;i++){
+	if(myform.elements.item(i).type!="text"){
+		continue
+		}	
+	myform.elements.item(i).onfocus= function(){
+			if(this.value=this.defaultValue){
+				this.value='';
+				};
+		}	
+	myform.elements.item(i).onblur= function(){
+			if(this.value==''){
+				this.value=this.defaultValue;
+				this.className='nok';
+				}
+				
+			else{
+				this.className='ok';
+				}	
+		};
+	
+	}
+
+
+</script>
+
+</body>
+</html>
